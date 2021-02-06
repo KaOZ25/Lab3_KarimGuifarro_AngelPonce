@@ -50,11 +50,36 @@ public class Lab3_KarimGuifarro_AngelPonce {
                         }
                         break;
                         case 2: {
-
+                             System.out.println("Listando corporaciones...");
+                            for (Object t : corp) {
+                                System.out.println(corp.indexOf(t)+":\n"+t);
+                            }
                         }
                         break;
                         case 3: {
-
+                             System.out.println("Modificando corporaciones...");
+                            System.out.println("Ingrese posicion de la corporacion a modificar: ");
+                            int pos=KaOz.nextInt();
+                            
+                            System.out.print("Ingrese nombre: ");
+                            String nombre=KaOz.next();
+                            corp.get(pos).setNombre(nombre);
+                            System.out.print("Ingrese sede: ");
+                            String sede=KaOz.next();
+                            corp.get(pos).setSede(sede);
+                            System.out.print("Ingrese anio de funcacion: ");
+                            int yearfoundation=KaOz.nextInt();
+                            corp.get(pos).setYearfoundation(yearfoundation);
+                            System.out.print("Nombre de CEO o presidente: ");
+                            String presidente=KaOz.next();
+                            corp.get(pos).setPresidente(presidente);
+                            System.out.print("Numero total de empleados: ");
+                            int empleados=KaOz.nextInt();
+                            corp.get(pos).setNumEmpleados(empleados);
+                            System.out.println("Cantidad de autos que se pueden fabricar: ");
+                            int cantAutos=KaOz.nextInt();
+                            corp.get(pos).setCantAutos(cantAutos);
+                            System.out.println("Se modificó!");
                         }
                         break;
                         case 4: {
@@ -118,15 +143,54 @@ public class Lab3_KarimGuifarro_AngelPonce {
                         }
                         break;
                         case 2: {
-
+                            System.out.println("Listando marcas...");
+                            for(int i=0; i<marcas.size(); i++){
+                                System.out.println(marcas.get(i));
+                            }
                         }
                         break;
                         case 3: {
-
+                            System.out.println("Modificando marcas...");
+                            System.out.println("Ingrese posicion de la marca a modificar: ");
+                            int pos=KaOz.nextInt();
+                            String nombre, slogan, fundador, presidente;
+                            int yearfundacion, yearIntegro, numModelos; //número de modelos: size del arraylist Modelos;
+                            double totalVentas;
+                            System.out.println("Ingrese nombre de la marca: ");
+                            nombre=KaOz.next();
+                            marcas.get(pos).setNombre(nombre);
+                            
+                            System.out.println("Ingrese slogan: ");
+                            slogan=KaOz.next();
+                            marcas.get(pos).setSlogan(slogan);
+                            System.out.println("Fundador: ");
+                            fundador=KaOz.next();
+                            marcas.get(pos).setFundador(fundador);
+                            System.out.println("Nombre del presidente de marca: ");
+                            presidente=KaOz.next();
+                            marcas.get(pos).setPresidente(presidente);
+                            System.out.println("Anio de fundacion de la marca: ");
+                            yearfundacion=KaOz.nextInt();
+                            marcas.get(pos).setYearfundacion(yearfundacion);
+                            System.out.println("Anio de integracion: ");
+                            yearIntegro=KaOz.nextInt();
+                            marcas.get(pos).setYearIntegro(yearIntegro);
+                            System.out.println("Total de ventas: ");
+                            totalVentas=KaOz.nextDouble();
+                            marcas.get(pos).setTotalVentas(totalVentas);
+                            System.out.println("Se modificó la marca!");
                         }
                         break;
                         case 4: {
-
+                             Print2(marcas);
+                            System.out.println("Que desea modificar:");
+                            int mod = KaOz.nextInt();
+                            while (mod < 0 || mod > marcas.size()) {
+                                System.out.println("No existe");
+                                Print2(marcas);
+                                System.out.println("Igrese de nuevo el valor:");
+                            }
+                            marcas.remove(mod);
                         }
                         break;
                         case 5: {
@@ -149,10 +213,72 @@ public class Lab3_KarimGuifarro_AngelPonce {
                             + "3) Listar\n"
                             + "4) Eliminar\n"
                             + "5) Salir");
-                    int p = KaOz.nextInt();
-                    switch (p) {
+                    int v = KaOz.nextInt();
+                    switch (v) {
                         case 1: {
-
+                             System.out.println("Agregando modelos...");
+                                System.out.println("Corporaciones disponibles: ");
+                                for(int i=0; i<corp.size(); i++){
+                                    System.out.println("Posicion "+i+": "+corp.get(i).getNombre());
+                                }
+                                System.out.println("Ingrese la posicion de la corporacion: ");
+                                int p=KaOz.nextInt();
+                                
+                                System.out.println("Marcas existentes de esa Corporacion:");
+                                for(int i=0; i<corp.get(p).getMarcas().size(); i++){
+                                    System.out.println(i+" "+corp.get(p).getMarcas().get(i).getNombre());
+                                }
+                                System.out.println("Ingrese posicion de marca: ");
+                                int pos=KaOz.nextInt();
+                                
+                                String nombre, anioFabricacion, tipoMotor, cilindradaMotor, precio, tecnologias; 
+                                System.out.println("Ingrese nombre: ");
+                                nombre=KaOz.next();
+                                System.out.println("Anio de fabricacion: ");
+                                anioFabricacion=KaOz.next();
+                                System.out.println("Tipo de mototr: ");
+                                tipoMotor=KaOz.next();
+                                System.out.println("Cilindrada de motor: ");
+                                cilindradaMotor=KaOz.next();
+                                System.out.println("Ingrese precio: ");
+                                precio=KaOz.next();
+                                System.out.println("Tecnologias: ");
+                                tecnologias=KaOz.next();
+                                System.out.println("Carrocerias");
+                                System.out.println("1. Hatchback");
+                                System.out.println("2. Sedan");
+                                System.out.println("3. SUV");
+                                System.out.println("Eliga: ");
+                                int elig=KaOz.nextInt();
+                                if(elig==1){
+                                    int capacidadMaletero, longitudTotal, bolsasDeAire;
+                                    System.out.println("Capacidad de maletero: ");
+                                    capacidadMaletero=KaOz.nextInt();
+                                    System.out.println("Longitud: ");
+                                    longitudTotal=KaOz.nextInt();
+                                    System.out.println("Bolsas de aire cantidad: ");
+                                    bolsasDeAire=KaOz.nextInt();
+                                    modelos.add(new MoHatchback(capacidadMaletero,longitudTotal,bolsasDeAire,nombre,anioFabricacion,tipoMotor,cilindradaMotor,precio,tecnologias));
+                                    marcas.get(pos).setModelos(modelos);
+                                }
+                                else if(elig==2){
+                                    String AndroidPlay="no", AndroidAuto="no";
+                                    //AndroidPlay es SI o NO
+                                    ArrayList<String> asistentesDeConduccion = new ArrayList();
+                                    System.out.println("AndroidPlay? [s/n]: ");
+                                    AndroidPlay=KaOz.next();
+                                    System.out.println("Android Auto [s\n]: ");
+                                    AndroidAuto=KaOz.next();
+                                    System.out.println("Cuantos asistentes de conduccion?: ");
+                                    int asis=KaOz.nextInt();
+                                    for(int i=0;i<asis; i++){
+                                        System.out.println("Ingrese asistente de conduccion: ");
+                                        String asistente=KaOz.next();
+                                        asistentesDeConduccion.add(asistente);
+                                    }
+                                    modelos.add(new MoSedan(AndroidPlay,AndroidAuto,asistentesDeConduccion,nombre,anioFabricacion,tipoMotor,cilindradaMotor,precio,tecnologias));
+                                    marcas.get(pos).setModelos(modelos);
+                                }
                         }
                         break;
                         case 2: {
