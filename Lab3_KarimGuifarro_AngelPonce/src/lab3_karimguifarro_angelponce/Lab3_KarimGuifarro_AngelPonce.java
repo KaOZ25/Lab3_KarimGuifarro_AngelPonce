@@ -6,7 +6,6 @@ public class Lab3_KarimGuifarro_AngelPonce {
 
     public static Scanner KaOz = new Scanner(System.in);
     public static ArrayList<Corporaciones> corp = new ArrayList();
-    public static ArrayList<Corporaciones> corporaciones = new ArrayList();
     public static ArrayList<Marcas> marcas = new ArrayList();
     public static ArrayList<Fabricas> fabricas = new ArrayList();
     public static ArrayList<Divisiones_Tech> tech = new ArrayList();
@@ -63,7 +62,7 @@ public class Lab3_KarimGuifarro_AngelPonce {
                             System.out.println("Que desea modificar:");
                             int mod = KaOz.nextInt();
                             while (mod < 0 || mod > corp.size()) {
-                                System.out.println("No existe este detective");
+                                System.out.println("No existe");
                                 Print(corp);
                                 System.out.println("Igrese de nuevo el valor:");
                             }
@@ -78,6 +77,10 @@ public class Lab3_KarimGuifarro_AngelPonce {
                     }
                 }
                 case 2: {
+                    if (fabricas.isEmpty()) {
+                        System.out.println("Debe crear una fabrica por lo menos");
+                        break;
+                    }
                     System.out.print("1) Crear\n"
                             + "2) Modificar\n"
                             + "3) Listar\n"
@@ -96,6 +99,7 @@ public class Lab3_KarimGuifarro_AngelPonce {
                             String nombre, slogan, fundador, presidente;
                             int yearfundacion, yearIntegro, numModelos; //número de modelos: size del arraylist Modelos;
                             double totalVentas;
+                                numModelos=modelos.size();
                             System.out.println("Ingrese nombre de la marca: ");
                             nombre = KaOz.next();
                             System.out.println("Ingrese slogan: ");
@@ -133,6 +137,13 @@ public class Lab3_KarimGuifarro_AngelPonce {
                     }
                 }
                 case 3: {
+                     if (fabricas.isEmpty()) {
+                        System.out.println("Debe crear una fabrica por lo menos");
+                        break;
+                    }else if (marcas.isEmpty()) {
+                          System.out.println("Debe crear una marca por lo menos");
+                        break;
+                    }
                     System.out.print("1) Crear\n"
                             + "2) Modificar\n"
                             + "3) Listar\n"
@@ -164,6 +175,10 @@ public class Lab3_KarimGuifarro_AngelPonce {
                     }
                 }
                 case 4: {
+                     if (fabricas.isEmpty()) {
+                        System.out.println("Debe crear una fabrica por lo menos");
+                        break;
+                    }
                     System.out.print("1) Crear\n"
                             + "2) Modificar\n"
                             + "3) Listar\n"
@@ -209,6 +224,10 @@ public class Lab3_KarimGuifarro_AngelPonce {
                     }
                 }
                 case 5: {
+                     if (fabricas.isEmpty()) {
+                        System.out.println("Debe crear una fabrica por lo menos");
+                        break;
+                    }
                     System.out.print("1) Crear\n"
                             + "2) Modificar\n"
                             + "3) Listar\n"
@@ -225,21 +244,69 @@ public class Lab3_KarimGuifarro_AngelPonce {
                             String campo = KaOz.next();
                             System.out.println("Ingrese la tecnologia desarrollada");
                             String tech_desarrollada = KaOz.next();
-                            tech.add(new Divisiones_Tech(nombre, campo, tech_desarrollada, año_creacion));
+                            Print(corp);
+                            int sel=KaOz.nextInt();
+                             while (sel < 0 || sel > corp.size()) {
+                                System.out.println("No existe");
+                                Print(corp);
+                                System.out.println("Igrese de nuevo el valor:");
+                                sel=KaOz.nextInt();
+                            }
+                            Corporaciones corporacion = corp.get(sel);
+                            tech.add(new Divisiones_Tech(nombre, campo, tech_desarrollada, año_creacion,corporacion));
 
                         }
                         break;
                         case 2: {
-
+                            Print3(tech);
                         }
                         break;
                         case 3: {
-
+                             Print(tech);
+                            int mod=KaOz.nextInt();
+                             while (mod < 0 || mod > corp.size()) {
+                                System.out.println("No existe");
+                                Print(tech);
+                                System.out.println("Igrese de nuevo el valor:");
+                                mod=KaOz.nextInt();
+                            }
+                            System.out.println("Ingrese el nombre");
+                            String nombre = KaOz.next();
+                            System.out.println("Ingrese el año en el que se creo");
+                            int año_creacion = KaOz.nextInt();
+                            System.out.println("Ingrese el campo");
+                            String campo = KaOz.next();
+                            System.out.println("Ingrese la tecnologia desarrollada");
+                            String tech_desarrollada = KaOz.next();
+                            Print(corp);
+                            int sel=KaOz.nextInt();
+                             while (sel < 0 || sel > corp.size()) {
+                                System.out.println("No existe");
+                                Print(corp);
+                                System.out.println("Igrese de nuevo el valor:");
+                                sel=KaOz.nextInt();
+                            }
+                            Corporaciones corporacion = corp.get(sel);
+                            tech.get(mod).setNombre(nombre);
+                             tech.get(mod).setAño_creacion(año_creacion);
+                              tech.get(mod).setCampo(campo);
+                               tech.get(mod).setTech_desarrollada(tech_desarrollada);
+                                tech.get(mod).setCorporacion(corporacion);
+                                 
                         }
                         break;
                         case 4: {
-
+                             Print3(tech);
+                            System.out.println("Que desea modificar:");
+                            int mod = KaOz.nextInt();
+                            while (mod < 0 || mod > tech.size()) {
+                                System.out.println("No existe");
+                                Print3(tech);
+                                System.out.println("Igrese de nuevo el valor:");
+                            }
+                            tech.remove(mod);
                         }
+                        
                         break;
                         case 5: {
                             break;
@@ -261,13 +328,28 @@ public class Lab3_KarimGuifarro_AngelPonce {
     }
 
     static void Print(ArrayList corp) {
-        System.out.println("Que estado dese ver?");
-        String est = "Premium";
         for (int i = 0; i < corp.size(); i++) {
-            if (corp.get(i).equals(est)) {
                 System.out.println("[" + corp.get(i) + "]");
-            } else {
-            }
+           
+        }
+    }
+    static void Print1(ArrayList marcas) {
+        
+        for (int i = 0; i < marcas.size(); i++) {
+            
+                System.out.println("[" + marcas.get(i) + "]");
+        }
+    }
+static void Print2(ArrayList fabricas) {
+        for (int i = 0; i < corp.size(); i++) {
+                System.out.println("[" + fabricas.get(i) + "]");
+           
+        }
+    }
+static void Print3(ArrayList tech) {
+        for (int i = 0; i < tech.size(); i++) {
+                System.out.println("[" + tech.get(i) + "]");
+           
         }
     }
 }
