@@ -282,7 +282,10 @@ public class Lab3_KarimGuifarro_AngelPonce {
                         }
                         break;
                         case 2: {
-
+                             System.out.println("Listando modelos...");
+                            for(int i=0; i<modelos.size(); i++){
+                                System.out.println(modelos.get(i));
+                            }
                         }
                         break;
                         case 3: {
@@ -290,7 +293,15 @@ public class Lab3_KarimGuifarro_AngelPonce {
                         }
                         break;
                         case 4: {
-
+                             Print4(modelos);
+                            System.out.println("Que desea modificar:");
+                            int mod = KaOz.nextInt();
+                            while (mod < 0 || mod > modelos.size()) {
+                                System.out.println("No existe");
+                                Print2(modelos);
+                                System.out.println("Igrese de nuevo el valor:");
+                            }
+                            marcas.remove(mod);
                         }
                         break;
                         case 5: {
@@ -464,6 +475,13 @@ public class Lab3_KarimGuifarro_AngelPonce {
         for (int i = 0; i < marcas.size(); i++) {
             
                 System.out.println("[" + marcas.get(i) + "]");
+        }
+    }
+    static void Print4(ArrayList modelos) {
+        
+        for (int i = 0; i < modelos.size(); i++) {
+            
+                System.out.println("[" + modelos.get(i) + "]");
         }
     }
 static void Print2(ArrayList fabricas) {
